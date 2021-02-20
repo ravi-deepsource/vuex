@@ -18,7 +18,7 @@ export function setupPuppeteer () {
       if (e.type() === 'error') {
         const err = e.args()[0]
         console.error(
-          `Error from Puppeteer-loaded page:\n`,
+          'Error from Puppeteer-loaded page:\n',
           err._remoteObject.description
         )
       }
@@ -129,4 +129,3 @@ export function setupPuppeteer () {
     sleep
   }
 }
-

@@ -12,8 +12,8 @@ module.exports = {
   setupFilesAfterEnv: [
     './test/setup.js'
   ],
-  "transform": {
-    "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+  transform: {
+    '^.+\\.js$': '<rootDir>/node_modules/babel-jest'
   },
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text-summary', 'clover'],

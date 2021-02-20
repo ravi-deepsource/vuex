@@ -346,7 +346,7 @@ describe('Hot Reload', () => {
 
     expect(store.state.a.value).toBe(1)
     expect(store.getters['a/foo']).toBe(undefined) // removed
-    expect(store.getters['foo']).toBe(1) // renamed
+    expect(store.getters.foo).toBe(1) // renamed
 
     // should not be called
     store.dispatch('a/foo')

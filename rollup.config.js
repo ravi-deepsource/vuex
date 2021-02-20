@@ -11,11 +11,11 @@ const banner = `/*!
  * @license MIT
  */`
 
-export function createEntries(configs) {
+export function createEntries (configs) {
   return configs.map((c) => createEntry(c))
 }
 
-function createEntry(config) {
+function createEntry (config) {
   const c = {
     input: config.input,
     plugins: [],
@@ -38,7 +38,7 @@ function createEntry(config) {
   c.plugins.push(replace({
     __VERSION__: pkg.version,
     __DEV__: config.format !== 'umd' && !config.browser
-      ? `(process.env.NODE_ENV !== 'production')`
+      ? '(process.env.NODE_ENV !== \'production\')'
       : config.env !== 'production'
   }))
 

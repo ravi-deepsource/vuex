@@ -4,26 +4,26 @@ const execa = require('execa')
 const { gzipSync } = require('zlib')
 const { compress } = require('brotli')
 
-async function run(config, files) {
+async function run (config, files) {
   await Promise.all([build(config), copy()])
   checkAllSizes(files)
 }
 
-async function build(config) {
+async function build (config) {
   await execa('rollup', ['-c', config], { stdio: 'inherit' })
 }
 
-async function copy() {
+async function copy () {
   await fs.copy('src/index.mjs', 'dist/vuex.mjs')
 }
 
-function checkAllSizes(files) {
+function checkAllSizes (files) {
   console.log()
   files.map((f) => checkSize(f))
   console.log()
 }
 
-function checkSize(file) {
+function checkSize (file) {
   const f = fs.readFileSync(file)
   const minSize = (f.length / 1024).toFixed(2) + 'kb'
   const gzipped = gzipSync(f)

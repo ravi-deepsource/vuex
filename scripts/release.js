@@ -22,7 +22,7 @@ const bin = (name) => path.resolve(__dirname, `../node_modules/.bin/${name}`)
 const run = (bin, args, opts = {}) => execa(bin, args, { stdio: 'inherit', ...opts })
 const step = (msg) => console.log(chalk.cyan(msg))
 
-async function main() {
+async function main () {
   let targetVersion
 
   const { release } = await prompt({
@@ -85,7 +85,7 @@ async function main() {
   const { yes: changelogOk } = await prompt({
     type: 'confirm',
     name: 'yes',
-    message: `Changelog generated. Does it look good?`
+    message: 'Changelog generated. Does it look good?'
   })
 
   if (!changelogOk) {
@@ -99,7 +99,7 @@ async function main() {
 
   // Publish the package.
   step('\nPublishing the package...')
-  await run ('yarn', [
+  await run('yarn', [
     'publish', '--tag', tag, '--new-version', targetVersion, '--no-commit-hooks',
     '--no-git-tag-version'
   ])
@@ -111,7 +111,7 @@ async function main() {
   await run('git', ['push'])
 }
 
-function updatePackage(version) {
+function updatePackage (version) {
   const pkgPath = path.resolve(path.resolve(__dirname, '..'), 'package.json')
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
 

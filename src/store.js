@@ -15,9 +15,9 @@ export class Store {
     }
 
     if (__DEV__) {
-      assert(Vue, `must call Vue.use(Vuex) before creating a store instance.`)
-      assert(typeof Promise !== 'undefined', `vuex requires a Promise polyfill in this browser.`)
-      assert(this instanceof Store, `store must be called with the new operator.`)
+      assert(Vue, 'must call Vue.use(Vuex) before creating a store instance.')
+      assert(typeof Promise !== 'undefined', 'vuex requires a Promise polyfill in this browser.')
+      assert(this instanceof Store, 'store must be called with the new operator.')
     }
 
     const {
@@ -76,7 +76,7 @@ export class Store {
 
   set state (v) {
     if (__DEV__) {
-      assert(false, `use store.replaceState() to explicit replace store state.`)
+      assert(false, 'use store.replaceState() to explicit replace store state.')
     }
   }
 
@@ -140,7 +140,7 @@ export class Store {
         .forEach(sub => sub.before(action, this.state))
     } catch (e) {
       if (__DEV__) {
-        console.warn(`[vuex] error in before action subscribers: `)
+        console.warn('[vuex] error in before action subscribers: ')
         console.error(e)
       }
     }
@@ -157,7 +157,7 @@ export class Store {
             .forEach(sub => sub.after(action, this.state))
         } catch (e) {
           if (__DEV__) {
-            console.warn(`[vuex] error in after action subscribers: `)
+            console.warn('[vuex] error in after action subscribers: ')
             console.error(e)
           }
         }
@@ -169,7 +169,7 @@ export class Store {
             .forEach(sub => sub.error(action, this.state, error))
         } catch (e) {
           if (__DEV__) {
-            console.warn(`[vuex] error in error action subscribers: `)
+            console.warn('[vuex] error in error action subscribers: ')
             console.error(e)
           }
         }
@@ -189,7 +189,7 @@ export class Store {
 
   watch (getter, cb, options) {
     if (__DEV__) {
-      assert(typeof getter === 'function', `store.watch only accepts a function.`)
+      assert(typeof getter === 'function', 'store.watch only accepts a function.')
     }
     return this._watcherVM.$watch(() => getter(this.state, this.getters), cb, options)
   }
@@ -204,7 +204,7 @@ export class Store {
     if (typeof path === 'string') path = [path]
 
     if (__DEV__) {
-      assert(Array.isArray(path), `module path must be a string or an Array.`)
+      assert(Array.isArray(path), 'module path must be a string or an Array.')
       assert(path.length > 0, 'cannot register the root module by using registerModule.')
     }
 
@@ -218,7 +218,7 @@ export class Store {
     if (typeof path === 'string') path = [path]
 
     if (__DEV__) {
-      assert(Array.isArray(path), `module path must be a string or an Array.`)
+      assert(Array.isArray(path), 'module path must be a string or an Array.')
     }
 
     this._modules.unregister(path)
@@ -233,7 +233,7 @@ export class Store {
     if (typeof path === 'string') path = [path]
 
     if (__DEV__) {
-      assert(Array.isArray(path), `module path must be a string or an Array.`)
+      assert(Array.isArray(path), 'module path must be a string or an Array.')
     }
 
     return this._modules.isRegistered(path)
@@ -513,7 +513,7 @@ function registerGetter (store, type, rawGetter, local) {
 function enableStrictMode (store) {
   store._vm.$watch(function () { return this._data.$$state }, () => {
     if (__DEV__) {
-      assert(store._committing, `do not mutate vuex store state outside mutation handlers.`)
+      assert(store._committing, 'do not mutate vuex store state outside mutation handlers.')
     }
   }, { deep: true, sync: true })
 }
