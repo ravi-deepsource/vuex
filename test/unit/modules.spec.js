@@ -105,7 +105,7 @@ describe('Modules', () => {
 
     it('dynamic module registration preserving hydration', () => {
       const store = new Vuex.Store({})
-      store.replaceState({ a: { foo: 'state' }})
+      store.replaceState({ a: { foo: 'state' } })
       const actionSpy = jest.fn()
       const mutationSpy = jest.fn()
       store.registerModule('a', {
@@ -587,7 +587,7 @@ describe('Modules', () => {
       })
       expect(store.state.foo.value).toBe(2)
       expect(console.warn).toHaveBeenCalledWith(
-        `[vuex] state field "value" was overridden by a module with the same name at "foo.value"`
+        '[vuex] state field "value" was overridden by a module with the same name at "foo.value"'
       )
     })
 

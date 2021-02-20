@@ -54,8 +54,8 @@ describe('Module', () => {
   it('get child method', () => {
     const module = new Module({})
 
-    const subModule1 = new Module({ state: { name: 'v1' }})
-    const subModule2 = new Module({ state: { name: 'v2' }})
+    const subModule1 = new Module({ state: { name: 'v1' } })
+    const subModule2 = new Module({ state: { name: 'v2' } })
     module.addChild('v1', subModule1)
     module.addChild('v2', subModule2)
     expect(module.getChild('v2')).toEqual(subModule2)

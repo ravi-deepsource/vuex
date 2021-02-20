@@ -55,7 +55,7 @@ export default class ModuleCollection {
       if (__DEV__) {
         console.warn(
           `[vuex] trying to unregister module '${key}', which is ` +
-          `not registered`
+          'not registered'
         )
       }
       return
